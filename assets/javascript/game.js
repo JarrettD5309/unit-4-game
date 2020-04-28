@@ -1,5 +1,13 @@
-var yourCharacter = $("#your-character");
+$(document).ready(function() {
+
 var characterSelect = $("#character-select");
+var yourCharacter = $("#your-character");
+var yourCharacterHolder;
+var enemiesHolder;
+var yourEnemyHolder;
+var oppSelect = $("#opp-select");
+var opp = $("#opp");
+var selectPhase = 0;
 
 var krsOne = {
     name: "KRS-One",
@@ -65,15 +73,21 @@ iceCube.pic(characterSelect);
 
 
 $(".mc-pic").on("click", function (event) {
-    if (event.target.id === "krs-one") {
-        krsOne.pic(yourCharacter);
-    } else if (event.target.id === "ll-cool-j") {
-        llCoolJ.pic(yourCharacter);
-    } else if (event.target.id === "kool-moe-dee") {
-        koolMoeDee.pic(yourCharacter);
-    } else if (event.target.id === "ice-cube") {
-        iceCube.pic(yourCharacter);
+    if (selectPhase===0) {
+        yourCharacterHolder = $(event.target).detach();
+        $(event.target).removeClass("mc-pic");
+        $(event.target).addClass("mc-pic2");
+        yourCharacter.append(yourCharacterHolder);
+        enemiesHolder = characterSelect.detach();
+        oppSelect.append(enemiesHolder);
+        selectPhase++;
+    } else if (selectPhase===1) {
+        yourEnemyHolder = $(event.target).detach();
+        $(".mc-pic").addClass("mc-pic2");
+        $(".mc-pic").removeClass("mc-pic");
+        opp.append(yourEnemyHolder);
+        selectPhase++;
     }
 });
 
-
+});
