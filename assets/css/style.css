@@ -1,11 +1,44 @@
 .mc-pic {
-    width: 200px;
+    width: 100%;
     cursor: pointer;
 }
 
-.mc-pic2 {
+/* .mc-pic2 {
     width: 200px;
     cursor: pointer;
+} */
+
+.img-box {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+}
+
+.img-box2 {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    display: inline-block;
+    border: 2px solid red;
+}
+
+.name-text {
+    position: absolute;
+    width:100%;
+    background-color: white;
+    color: black;
+    bottom: 15%;
+    text-align: center;
+}
+
+.health-text {
+    position: absolute;
+    width:100%;
+    background-color: white;
+    color: black;
+    bottom: 5%;
+    text-align: center;
 }
 
 .button {
