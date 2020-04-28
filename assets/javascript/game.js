@@ -16,7 +16,7 @@ var krsOne = {
     id: "krs-one",
     healthId: "krs-one-health",
     image: "assets/images/krs-one.jpg",
-    healthPoints: 110,
+    healthPoints: 1100,
     attackPower: 10,
     counterAttackPower: 20,
     pic: function(location) {
@@ -155,7 +155,7 @@ $(".img-box").on("click", function (event) {
             attacker = iceCube;
         } 
         phaseCounter++;
-    } else if (phaseCounter===1) {
+    } else if (phaseCounter===1 || phaseCounter===3 || phaseCounter===5) {
         $(event.currentTarget).children(".health-text").attr("id", "defender")
         yourEnemyHolder = $(event.currentTarget).detach();
         $(".img-box").addClass("img-box2");
@@ -171,7 +171,7 @@ $(".img-box").on("click", function (event) {
             defender = iceCube;
         }
         phaseCounter++;
-    }
+    } 
 });
 
 function attack () {
@@ -183,8 +183,16 @@ function attack () {
 }
 
 $(".button").on("click", function(event) {
-    if (phaseCounter===2) {
+    if (phaseCounter===2 || phaseCounter===4 || phaseCounter===6) {
         attack ();
+        if (attacker.healthPoints<=0) {
+            alert("game over");
+        } else if (defender.healthPoints<=0) {
+            alert("You have defeated " + defender.name);
+            alert("pick a new opponate");
+            $("#opp").empty();
+            phaseCounter++;
+        }
 
     }
 
