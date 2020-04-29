@@ -4,15 +4,15 @@
 }
 
 .img-box {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     position: relative;
     display: inline-block;
 }
 
 .img-box2 {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     position: relative;
     display: inline-block;
     border: 2px solid red;

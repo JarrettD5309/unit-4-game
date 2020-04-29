@@ -16,9 +16,10 @@ var krsOne = {
     id: "krs-one",
     healthId: "krs-one-health",
     image: "assets/images/krs-one.jpg",
-    healthPoints: 1100,
-    attackPower: 10,
-    counterAttackPower: 20,
+    healthPoints: 60,
+    attackPower: 4,
+    currentAttackPower: 4,
+    counterAttackPower: 2,
     pic: function(location) {
         var imgBoxDiv = $("<div>");
         imgBoxDiv.addClass("img-box");
@@ -46,9 +47,10 @@ var llCoolJ = {
     id: "ll-cool-j",
     healthId: "ll-cool-j-health",
     image: "assets/images/ll-cool-j.jpg",
-    healthPoints: 100,
-    attackPower: 5,
-    counterAttackPower: 30,
+    healthPoints: 70,
+    attackPower: 3,
+    currentAttackPower: 3,
+    counterAttackPower: 1,
     pic: function(location) {
         var imgBoxDiv = $("<div>");
         imgBoxDiv.addClass("img-box");
@@ -77,7 +79,8 @@ var koolMoeDee = {
     healthId: "kool-moe-dee-health",
     image: "assets/images/kool-moe-dee.jpg",
     healthPoints: 80,
-    attackPower: 20,
+    attackPower: 2,
+    currentAttackPower: 2,
     counterAttackPower: 5,
     pic: function(location) {
         var imgBoxDiv = $("<div>");
@@ -106,9 +109,10 @@ var iceCube = {
     id: "ice-cube",
     healthId: "ice-cube-health",
     image: "assets/images/ice-cube.jpg",
-    healthPoints: 90,
-    attackPower: 15,
-    counterAttackPower: 15,
+    healthPoints: 65,
+    attackPower: 1,
+    currentAttackPower: 1,
+    counterAttackPower: 10,
     pic: function(location) {
         var imgBoxDiv = $("<div>");
         imgBoxDiv.addClass("img-box");
@@ -175,8 +179,9 @@ $(".img-box").on("click", function (event) {
 });
 
 function attack () {
-    defender.healthPoints = defender.healthPoints - attacker.attackPower;
-    attacker.attackPower = attacker.attackPower*2;
+    console.log(attacker.currentAttackPower);
+    defender.healthPoints = defender.healthPoints - attacker.currentAttackPower;
+    attacker.currentAttackPower = attacker.currentAttackPower+attacker.attackPower;
     attacker.healthPoints = attacker.healthPoints-defender.counterAttackPower;
     $("#attacker").html("Health Points: " + attacker.healthPoints);
     $("#defender").html("Health Points: " + defender.healthPoints);
@@ -185,13 +190,16 @@ function attack () {
 $(".button").on("click", function(event) {
     if (phaseCounter===2 || phaseCounter===4 || phaseCounter===6) {
         attack ();
-        if (attacker.healthPoints<=0) {
-            alert("game over");
+        if (attacker.healthPoints<=0 && defender.healthPoints<=0) {
+            alert("both lose");
+            
         } else if (defender.healthPoints<=0) {
             alert("You have defeated " + defender.name);
-            alert("pick a new opponate");
+            alert("pick a new opponent");
             $("#opp").empty();
             phaseCounter++;
+        } else if (attacker.healthPoints<=0) {
+            alert("game over");
         }
 
     }
