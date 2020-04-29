@@ -2,6 +2,7 @@ $(document).ready(function() {
 
 var characterSelect = $("#character-select");
 var yourCharacter = $("#your-character");
+var instructions = $("#instructions");
 var yourCharacterHolder;
 var enemiesHolder;
 var yourEnemyHolder;
@@ -9,7 +10,7 @@ var attacker;
 var defender;
 var oppSelect = $("#opp-select");
 var opp = $("#opp");
-var phaseCounter = 0;
+var phaseCounter = -1;
 
 var krsOne = {
     name: "KRS-One",
@@ -135,13 +136,54 @@ var iceCube = {
     }
 }
 
+var instText = ["To win you must defeat all 3 opposing MCs.","The order that you choose your opponents is important!","You gain experience as you battle.","If at any point your health points dip to zero you lose.","Choose your MC to begin!"]
+
+
+
+function runInstructions() {
+    var instDiv1 = $("<p>");
+    instDiv1.text("To win you must defeat all 3 opposing MCs.");
+    instructions.append(instDiv1);
+    setTimeout(function() {
+        instructions.empty();
+        var instDiv2 = $("<p>");
+        instDiv2.text("The order that you choose your opponents is important!");
+        instructions.append(instDiv2);
+    }, 3000);
+    setTimeout(function() {
+        instructions.empty();
+        var instDiv3 = $("<p>");
+        instDiv3.text("You gain experience as you battle.");
+        instructions.append(instDiv3);
+    }, 6000);
+    setTimeout(function() {
+        instructions.empty();
+        var instDiv4 = $("<p>");
+        instDiv4.text("If at any point your health points dip to zero you lose.");
+        instructions.append(instDiv4);
+    }, 9000);
+    setTimeout(function() {
+        instructions.empty();
+        var instDiv5 = $("<p>");
+        instDiv5.text("Choose your MC to begin!");
+        instructions.append(instDiv5);
+        phaseCounter++;
+    }, 12000);
+    
+    
+}
+
+
+runInstructions();
 krsOne.pic(characterSelect);
 llCoolJ.pic(characterSelect);
 koolMoeDee.pic(characterSelect);
 iceCube.pic(characterSelect);
 
+
 $(".img-box").on("click", function (event) {
     if (phaseCounter===0) {
+        instructions.empty();
         $(event.currentTarget).children(".health-text").attr("id", "attacker");
         yourCharacterHolder = $(event.currentTarget).detach();
         $(event.currentTarget).removeClass("img-box");
