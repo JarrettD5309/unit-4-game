@@ -11,6 +11,7 @@ var defender;
 var oppSelect = $("#opp-select");
 var opp = $("#opp");
 var phaseCounter = -1;
+var oppCounter = 0;
 
 var krsOne = {
     name: "KRS-One",
@@ -141,6 +142,7 @@ var instText = ["To win you must defeat all 3 opposing MCs.","The order that you
 
 
 function runInstructions() {
+    instructions.empty();
     var instDiv1 = $("<p>");
     instDiv1.text("To win you must defeat all 3 opposing MCs.");
     instructions.append(instDiv1);
@@ -175,6 +177,11 @@ function runInstructions() {
 
 
 runInstructions();
+
+// DISABLE THIS WHEN RUN INSTRUCTIONS
+// phaseCounter++;
+
+
 krsOne.pic(characterSelect);
 llCoolJ.pic(characterSelect);
 koolMoeDee.pic(characterSelect);
@@ -184,6 +191,9 @@ iceCube.pic(characterSelect);
 $(".img-box").on("click", function (event) {
     if (phaseCounter===0) {
         instructions.empty();
+        var instDiv = $("<p>");
+        instDiv.text("Pick an opponent to battle.");
+        instructions.append(instDiv);
         $(event.currentTarget).children(".health-text").attr("id", "attacker");
         yourCharacterHolder = $(event.currentTarget).detach();
         $(event.currentTarget).removeClass("img-box");
@@ -202,6 +212,7 @@ $(".img-box").on("click", function (event) {
         } 
         phaseCounter++;
     } else if (phaseCounter===1 || phaseCounter===3 || phaseCounter===5) {
+        instructions.empty();
         $(event.currentTarget).children(".health-text").attr("id", "defender")
         yourEnemyHolder = $(event.currentTarget).detach();
         $(".img-box").addClass("img-box2");
@@ -217,11 +228,11 @@ $(".img-box").on("click", function (event) {
             defender = iceCube;
         }
         phaseCounter++;
+        oppCounter++;
     } 
 });
 
 function attack () {
-    console.log(attacker.currentAttackPower);
     defender.healthPoints = defender.healthPoints - attacker.currentAttackPower;
     attacker.currentAttackPower = attacker.currentAttackPower+attacker.attackPower;
     attacker.healthPoints = attacker.healthPoints-defender.counterAttackPower;
@@ -232,21 +243,63 @@ function attack () {
 $(".button").on("click", function(event) {
     if (phaseCounter===2 || phaseCounter===4 || phaseCounter===6) {
         attack ();
-        if (attacker.healthPoints<=0 && defender.healthPoints<=0) {
-            alert("both lose");
+        if (oppCounter===3 && defender.healthPoints<=0) {
+            instructions.empty();
+            var instDiv = $("<p>");
+            instDiv.text("YOU WIN! Press any key to play again!");
+            instructions.append(instDiv);
+            phaseCounter++;
+            $(document).on("keyup", function() {
+                location.reload();
+            });
             
-        } else if (defender.healthPoints<=0) {
-            alert("You have defeated " + defender.name);
-            alert("pick a new opponent");
+        } else if (defender.healthPoints<=0 && attacker.healthPoints>0) {
+            instructions.empty();
+            var instDiv = $("<p>");
+            instDiv.text("You have defeated " + defender.name + ". Pick a new opponent!");
+            instructions.append(instDiv);
             $("#opp").empty();
             phaseCounter++;
         } else if (attacker.healthPoints<=0) {
-            alert("game over");
+            instructions.empty();
+            var instDiv = $("<p>");
+            instDiv.text("GAME OVER! Press any key to play again!");
+            instructions.append(instDiv);
+            phaseCounter++;
+            $(document).on("keyup", function() {
+                location.reload();
+            });
         }
 
     }
 
 });
+
+// function reset () {
+//     yourCharacter.empty();
+//     opp.empty();
+//     oppSelect.empty();
+//     characterSelect = $("#character-select");
+//     yourCharacter = $("#your-character");
+//     instructions = $("#instructions");
+//     oppSelect = $("#opp-select");
+//     opp = $("#opp");
+//     yourCharacterHolder;
+//     enemiesHolder;
+//     yourEnemyHolder;
+//     attacker;
+//     defender;
+//     phaseCounter = -1;
+//     oppCounter = 0;
+//     krsOne.healthPoints= 60;
+//     krsOne.attackPower= 4;
+//     krsOne.currentAttackPower= 4;
+//     krsOne.pic(characterSelect);
+//     llCoolJ.pic(characterSelect);
+//     koolMoeDee.pic(characterSelect);
+//     iceCube.pic(characterSelect);
+//     runInstructions();
+// }
 
 
 
