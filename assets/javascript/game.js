@@ -34,10 +34,13 @@ $(document).ready(function() {
             var nameDiv = $("<p>");
             nameDiv.text(this.name);
             nameDiv.addClass("name-text");
-            var healthDiv = $("<p>");
-            healthDiv.attr("id",this.healthId);
-            healthDiv.text("Health Points: " + this.healthPoints);
-            healthDiv.addClass("health-text");
+
+            var healthDiv = $("<div>");
+            healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
+            // var healthDiv = $("<p>");
+            // healthDiv.attr("id",this.healthId);
+            // healthDiv.text("Health Points: " + this.healthPoints);
+            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -65,10 +68,13 @@ $(document).ready(function() {
             var nameDiv = $("<p>");
             nameDiv.text(this.name);
             nameDiv.addClass("name-text");
-            var healthDiv = $("<p>");
-            healthDiv.attr("id",this.healthId);
-            healthDiv.text("Health Points: " + this.healthPoints);
-            healthDiv.addClass("health-text");
+
+            var healthDiv = $("<div>");
+            healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
+            // var healthDiv = $("<p>");
+            // healthDiv.attr("id",this.healthId);
+            // healthDiv.text("Health Points: " + this.healthPoints);
+            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -96,10 +102,13 @@ $(document).ready(function() {
             var nameDiv = $("<p>");
             nameDiv.text(this.name);
             nameDiv.addClass("name-text");
-            var healthDiv = $("<p>");
-            healthDiv.attr("id",this.healthId);
-            healthDiv.text("Health Points: " + this.healthPoints);
-            healthDiv.addClass("health-text");
+
+            var healthDiv = $("<div>");
+            healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
+            // var healthDiv = $("<p>");
+            // healthDiv.attr("id",this.healthId);
+            // healthDiv.text("Health Points: " + this.healthPoints);
+            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -127,10 +136,13 @@ $(document).ready(function() {
             var nameDiv = $("<p>");
             nameDiv.text(this.name);
             nameDiv.addClass("name-text");
-            var healthDiv = $("<p>");
-            healthDiv.attr("id",this.healthId);
-            healthDiv.text("Health Points: " + this.healthPoints);
-            healthDiv.addClass("health-text");
+
+            var healthDiv = $("<div>");
+            healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
+            // var healthDiv = $("<p>");
+            // healthDiv.attr("id",this.healthId);
+            // healthDiv.text("Health Points: " + this.healthPoints);
+            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -198,7 +210,7 @@ $(document).ready(function() {
             var instDiv = $("<p>");
             instDiv.text("Pick an opponent to battle.");
             instructions.append(instDiv);
-            $(event.currentTarget).children(".health-text").attr("id", "attacker");
+            $(event.currentTarget).find(".health-text").attr("id", "attacker");
             yourCharacterHolder = $(event.currentTarget).detach();
             $(event.currentTarget).removeClass("img-box");
             $(event.currentTarget).addClass("img-box2");
@@ -222,7 +234,7 @@ $(document).ready(function() {
             instDiv.text("ATTACK!");
             instructions.append(instDiv);
             
-            $(event.currentTarget).children(".health-text").attr("id", "defender")
+            $(event.currentTarget).find(".health-text").attr("id", "defender")
             yourEnemyHolder = $(event.currentTarget).detach();
             $(".img-box").addClass("img-box2");
             $(".img-box").removeClass("img-box");
@@ -245,8 +257,8 @@ $(document).ready(function() {
         defender.healthPoints = defender.healthPoints - attacker.currentAttackPower;
         attacker.currentAttackPower = attacker.currentAttackPower+attacker.attackPower;
         attacker.healthPoints = attacker.healthPoints-defender.counterAttackPower;
-        $("#attacker").html("Health Points: " + attacker.healthPoints);
-        $("#defender").html("Health Points: " + defender.healthPoints);
+        $("#attacker").html('Health Points:&nbsp<span class="health-num">' + attacker.healthPoints + '</span>');
+        $("#defender").html('Health Points:&nbsp<span class="health-num">' + defender.healthPoints + '</span>');
     }
 
     $(".button").on("click", function(event) {

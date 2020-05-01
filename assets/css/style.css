@@ -16,6 +16,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "Pet";
+    src: url("../fonts/PetMe.woff2") format("woff2"),
+        url("../fonts/PetMe.woff") format("woff"),
+        url("../fonts/PetMe.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 * {
 	outline: none;
@@ -121,10 +130,11 @@ img {
     width:100%;
     background-color: black;
     color: white;
-    bottom: 20%;
+    bottom: 21%;
     text-align: center;
     font-size: 1.5rem;
     letter-spacing: 2px;
+    line-height: 1.8rem;
 }
 
 .health-text {
@@ -132,10 +142,20 @@ img {
     width:100%;
     background-color: black;
     color: white;
-    bottom: 5%;
+    bottom: 3%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.8rem;
+}
+
+.health-num {
+    font-family: Pet;
+    font-size: .7rem;
+    /* display: inline-block; */
 }
 
 .button-container {
