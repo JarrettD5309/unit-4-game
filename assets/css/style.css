@@ -16,6 +16,7 @@
     font-style: normal;
 }
 
+
 * {
 	outline: none;
 }
@@ -51,9 +52,6 @@ img {
     margin: 0 auto;
     /* background-color: blue; */
 }
-
-
-
 
 .header {
     text-align: center;
