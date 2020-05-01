@@ -187,9 +187,13 @@ llCoolJ.pic(characterSelect);
 koolMoeDee.pic(characterSelect);
 iceCube.pic(characterSelect);
 
+$(".button").hide();
+$(".avail-attack-col").hide();
+
 
 $(".img-box").on("click", function (event) {
     if (phaseCounter===0) {
+        $(".avail-attack-col").show();
         instructions.empty();
         var instDiv = $("<p>");
         instDiv.text("Pick an opponent to battle.");
@@ -212,7 +216,12 @@ $(".img-box").on("click", function (event) {
         } 
         phaseCounter++;
     } else if (phaseCounter===1 || phaseCounter===3 || phaseCounter===5) {
+        $(".button").show();
         instructions.empty();
+        var instDiv = $("<p>");
+        instDiv.text("ATTACK!");
+        instructions.append(instDiv);
+        
         $(event.currentTarget).children(".health-text").attr("id", "defender")
         yourEnemyHolder = $(event.currentTarget).detach();
         $(".img-box").addClass("img-box2");
@@ -263,7 +272,7 @@ $(".button").on("click", function(event) {
         } else if (attacker.healthPoints<=0) {
             instructions.empty();
             var instDiv = $("<p>");
-            instDiv.text("GAME OVER! Press any key to play again!");
+            instDiv.text("YOU LOSE! Press any key to play again!");
             instructions.append(instDiv);
             phaseCounter++;
             $(document).on("keyup", function() {
@@ -279,6 +288,9 @@ $(".button").on("click", function(event) {
 //     yourCharacter.empty();
 //     opp.empty();
 //     oppSelect.empty();
+//     var newDiv = $("<div>");
+//     newDiv.attr("id", "character-select");
+//     $("#character-select-section").append(newDiv);
 //     characterSelect = $("#character-select");
 //     yourCharacter = $("#your-character");
 //     instructions = $("#instructions");

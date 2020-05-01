@@ -12,34 +12,50 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <h1>MC Battle RPG</h1>
-    <section>
-        <div id="instructions"></div>
-    </section>
-    <section id="character-select-section">
-        <div id="character-select"></div>
-    </section>
-    <section>
-        <h1>Your Character</h1>
-        <div id="your-character"></div>
-    </section>
+    <div class="container">
+            
+        <h1 class="header">MC Battle RPG</h1>
+        <section id="character-select-section">
+            <div id="character-select"></div>
+        </section>
 
-    <section>
-        <h1>MCs Available To Battle</h1>
-        <div id="opp-select"></div>
-    </section>
+        <section>
+            <div id="instructions"><p>The order that you choose your opponents is important!</p></div>
+        </section>
+            
+        
 
-    <section>
-        <h1>Fight Section</h1>
-        <button class="button">Attack</button>
-    </section>
+        <div class="clearfix">
+            <section class="player-col">
+                <h2>Your Character</h2>
+                <div id="your-character"></div>
+            </section>
 
-    <section>
-        <h1>Defender</h1>
-        <div id="opp"></div>
-    </section>
-    
+            <div class="turntable-col">
+                <!-- <div class="clearfix"></div> -->
+                <img src="assets/images/turntable.jpg.jpg" class="turntable" alt="Turntable and Speaker image">
+                
+                    <div class="button-container">
+                        <div class="button-div">
+                            <button class="button">Attack</button>
+                        </div>
+                    </div>
+                <!-- </div> -->
+            </div>
+
+            <section class="opp-col">
+                <h2>Defender</h2>
+                <div id="opp"></div>
+            </section>
+        </div>
+
+        <section class="avail-attack-col">
+            <h2>MCs Available To Battle</h2>
+            <div id="opp-select"></div>
+        </section>
+
+    </div>
+
     <script src="assets/javascript/game.js"></script>
-
 </body>
 </html>
