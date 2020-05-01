@@ -147,26 +147,26 @@ $(document).ready(function() {
             var instDiv2 = $("<p>");
             instDiv2.text("The order that you choose your opponents is important!");
             instructions.append(instDiv2);
-        }, 3000);
+        }, 1000*2.8);
         setTimeout(function() {
             instructions.empty();
             var instDiv3 = $("<p>");
             instDiv3.text("You gain experience as you battle.");
             instructions.append(instDiv3);
-        }, 6000);
+        }, 1000*5.6);
         setTimeout(function() {
             instructions.empty();
             var instDiv4 = $("<p>");
             instDiv4.text("If at any point your health points dip to zero you lose.");
             instructions.append(instDiv4);
-        }, 9000);
+        }, 1000*8.4);
         setTimeout(function() {
             instructions.empty();
             var instDiv5 = $("<p>");
             instDiv5.text("Choose your MC to begin!");
             instructions.append(instDiv5);
             phaseCounter++;
-        }, 12000);
+        }, 1000*11.2);
         
         
     }
@@ -183,7 +183,8 @@ $(document).ready(function() {
     koolMoeDee.pic(characterSelect);
     iceCube.pic(characterSelect);
 
-    $(".button").hide();
+    $("#attack-button").hide();
+    $("#replay-button").hide();
     $(".avail-attack-col").hide();
 
 
@@ -216,7 +217,7 @@ $(document).ready(function() {
                 
             } else {
 
-                $(".button").show();
+                $("#attack-button").show();
                 instructions.empty();
                 var instDiv = $("<p>");
                 instDiv.text("ATTACK!");
@@ -257,12 +258,18 @@ $(document).ready(function() {
             if (oppCounter===3 && defender.healthPoints<=0) {
                 instructions.empty();
                 var instDiv = $("<p>");
-                instDiv.text("YOU WIN! Press any key to play again!");
+                instDiv.text("YOU WIN!");
                 instructions.append(instDiv);
-                phaseCounter++;
-                $(document).on("keyup", function() {
-                    location.reload();
-                });
+                phaseCounter=10;
+                $("#attack-button").hide();
+                setTimeout(function() {
+                    $("#replay-button").show();
+                }, 800);
+                
+                // phaseCounter++;
+                // $(document).on("keyup", function() {
+                //     location.reload();
+                // });
                 
             } else if (defender.healthPoints<=0 && attacker.healthPoints>0) {
                 instructions.empty();
@@ -274,17 +281,29 @@ $(document).ready(function() {
             } else if (attacker.healthPoints<=0) {
                 instructions.empty();
                 var instDiv = $("<p>");
-                instDiv.text("YOU LOSE! Press any key to play again!");
+                instDiv.text("YOU LOSE!");
                 instructions.append(instDiv);
-                phaseCounter++;
-                $(document).on("keyup", function() {
-                    location.reload();
-                });
+                phaseCounter=10;
+                $("#attack-button").hide();
+                setTimeout(function() {
+                    $("#replay-button").show();
+                }, 800);
+
+                // phaseCounter++;
+                // $(document).on("keyup", function() {
+                //     location.reload();
+                // });
             }
 
         }
 
     });
+
+    $("#replay-button").on("click", function(event) {
+        if (phaseCounter===10) {
+            location.reload();
+        }
+    });  
 
     // function reset () {
     //     yourCharacter.empty();
