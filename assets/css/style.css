@@ -59,7 +59,6 @@ img {
     width: 900px;
     height: 550px;
     margin: 0 auto;
-    /* background-color: blue; */
 }
 
 .header {
@@ -135,6 +134,7 @@ img {
     font-size: 1.5rem;
     letter-spacing: 2px;
     line-height: 1.8rem;
+    cursor: pointer;
 }
 
 .health-text {
@@ -150,12 +150,12 @@ img {
     align-items: center;
     justify-content: center;
     line-height: 1.8rem;
+    cursor: pointer;
 }
 
 .health-num {
     font-family: Pet;
     font-size: .7rem;
-    /* display: inline-block; */
 }
 
 .button-container {
@@ -208,4 +208,278 @@ img {
 
 #character-select-section {
     text-align: center;
+}
+
+
+
+@media screen and (max-width: 400px) {
+    p {
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-weight: normal;
+    }
+
+    h2 {
+        font-weight: normal;
+        font-size: 1.5rem;
+    }
+
+    .container {
+        width: 315px;
+    }
+
+    .img-box {
+        width: 65px;
+        height: 65px;
+    }
+
+    .img-box2 {
+        width: 90px;
+        height: 90px;
+    }
+
+    .name-text {
+        font-size: .5rem;
+        line-height: .7rem;
+        letter-spacing: .5px;
+        font-family: Arial, Helvetica, sans-serif;
+        bottom: 18%;
+    }
+    .health-text {
+        font-size: .5rem;
+        line-height: .7rem;
+        letter-spacing: .5px;
+        font-family: Arial, Helvetica, sans-serif;
+        display: none;
+    }
+
+    .health-num {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: .6rem;
+    }
+
+    .turntable {
+        display: none;
+    }
+
+    .turntable-col {
+        width: 20%;
+    }
+
+    .player-col {
+        width: 40%;
+    }
+    
+    .opp-col {
+        width: 40%;
+    }
+
+    .button-div {
+        padding-top: 35px;
+    }
+
+    .button {
+        padding: 5px 7px;
+        font-size: 1.2rem;
+        border-radius: 5px;
+        transition-duration: 0.3s;
+        border: 1px solid black;
+    }
+
+    
+    #attacker {
+        display: flex;
+    }
+
+    #defender {
+        display: flex;
+    }
+
+    #instructions {
+        height: 40px;
+    }
+
+}
+
+/* 401px to 640px */
+@media screen and (min-width: 401px) and (max-width: 640px) {
+    p {
+        font-size: 1.4rem;
+    }
+
+    h1 {
+        font-weight: normal;
+    }
+
+    h2 {
+        font-weight: normal;
+    }
+    .container {
+        width: 380px;
+    }
+
+    .img-box {
+        width: 80px;
+        height: 80px;
+    }
+
+    .img-box2 {
+        width: 100px;
+        height: 100px;
+    }
+
+    .name-text {
+        font-size: .6rem;
+        line-height: 1rem;
+        letter-spacing: .8px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .health-text {
+        font-size: .6rem;
+        line-height: 1rem;
+        letter-spacing: .5px;
+        font-family: Arial, Helvetica, sans-serif;
+        display: none;
+    }
+
+    .health-num {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: .6rem;
+    }
+
+    .turntable {
+        display: none;
+    }
+
+    .turntable-col {
+        width: 20%;
+    }
+
+    .player-col {
+        width: 40%;
+    }
+    
+    .opp-col {
+        width: 40%;
+    }
+
+    .button-div {
+        padding-top: 25px;
+    }
+
+    
+    #attacker {
+        display: flex;
+    }
+
+    #defender {
+        display: flex;
+    }
+
+    #instructions {
+        height: 40px;
+    }
+}
+
+/* 641px to 768px */
+@media screen and (min-width: 641px) and (max-width: 768px) {
+    p {
+        font-size: 1.6rem;
+    }
+
+    .container {
+        width: 610px;
+    }
+
+    .img-box {
+        width: 140px;
+        height: 140px;
+    }
+
+    .img-box2 {
+        width: 140px;
+        height: 140px;
+    }
+
+    .name-text {
+        font-size: .8rem;
+        line-height: 1.3rem;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .health-text {
+        font-size: .8rem;
+        line-height: 1.3rem;
+        letter-spacing: .5px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .health-num {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: .8rem;
+        letter-spacing: 2px;
+    }
+
+    .turntable-col {
+        width: 34%;
+    }
+
+    .player-col {
+        width: 33%;
+    }
+    
+    .opp-col {
+        width: 33%;
+    }
+
+    .button-div {
+        padding-top: 15px;
+    }
+}
+
+/* 769px to 950px */
+@media screen and (min-width: 769px) and (max-width: 950px) {
+    p {
+        font-size: 1.8rem;
+    }
+    .container {
+        width: 730px;
+    }
+
+    .img-box {
+        width: 160px;
+        height: 160px;
+    }
+
+    .img-box2 {
+        width: 160px;
+        height: 160px;
+    }
+
+    .name-text {
+        font-size: 1.3rem;
+        line-height: 1.5rem;
+    }
+    .health-text {
+        font-size: 1.2rem;
+        line-height: 1.5rem;
+    }
+
+    .turntable-col {
+        width: 30%;
+    }
+
+    .player-col {
+        width: 35%;
+    }
+    
+    .opp-col {
+        width: 35%;
+    }
+
+    .button-div {
+        padding-top: 15px;
+    }
+
 }

@@ -37,10 +37,6 @@ $(document).ready(function() {
 
             var healthDiv = $("<div>");
             healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
-            // var healthDiv = $("<p>");
-            // healthDiv.attr("id",this.healthId);
-            // healthDiv.text("Health Points: " + this.healthPoints);
-            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -71,10 +67,6 @@ $(document).ready(function() {
 
             var healthDiv = $("<div>");
             healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
-            // var healthDiv = $("<p>");
-            // healthDiv.attr("id",this.healthId);
-            // healthDiv.text("Health Points: " + this.healthPoints);
-            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -105,10 +97,6 @@ $(document).ready(function() {
 
             var healthDiv = $("<div>");
             healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
-            // var healthDiv = $("<p>");
-            // healthDiv.attr("id",this.healthId);
-            // healthDiv.text("Health Points: " + this.healthPoints);
-            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -139,10 +127,6 @@ $(document).ready(function() {
 
             var healthDiv = $("<div>");
             healthDiv.html('<p class="health-text" id="' +this.healthId + '">Health Points:&nbsp<span class="health-num">' + this.healthPoints + '</span></p>');
-            // var healthDiv = $("<p>");
-            // healthDiv.attr("id",this.healthId);
-            // healthDiv.text("Health Points: " + this.healthPoints);
-            // healthDiv.addClass("health-text");
             imgBoxDiv.append(newImg);
             imgBoxDiv.append(nameDiv);
             imgBoxDiv.append(healthDiv);
@@ -228,28 +212,34 @@ $(document).ready(function() {
             } 
             phaseCounter++;
         } else if (phaseCounter===1 || phaseCounter===3 || phaseCounter===5) {
-            $(".button").show();
-            instructions.empty();
-            var instDiv = $("<p>");
-            instDiv.text("ATTACK!");
-            instructions.append(instDiv);
-            
-            $(event.currentTarget).find(".health-text").attr("id", "defender")
-            yourEnemyHolder = $(event.currentTarget).detach();
-            $(".img-box").addClass("img-box2");
-            $(".img-box").removeClass("img-box");
-            opp.append(yourEnemyHolder);
-            if ($(event.currentTarget).children("img").attr("id")==="krs-one") {
-                defender = krsOne;
-            } else if ($(event.currentTarget).children("img").attr("id")==="ll-cool-j") {
-                defender = llCoolJ;
-            } else if ($(event.currentTarget).children("img").attr("id")==="kool-moe-dee") {
-                defender = koolMoeDee;
-            } else if ($(event.currentTarget).children("img").attr("id")==="ice-cube") {
-                defender = iceCube;
+            if ($(event.currentTarget).find(".health-text").attr("id")==="attacker" || $(event.currentTarget).find(".health-text").attr("id")==="defender") {
+                
+            } else {
+
+                $(".button").show();
+                instructions.empty();
+                var instDiv = $("<p>");
+                instDiv.text("ATTACK!");
+                instructions.append(instDiv);
+                
+                $(event.currentTarget).find(".health-text").attr("id", "defender")
+                $(".img-box").addClass("img-box2");
+                $(".img-box").removeClass("img-box");
+                yourEnemyHolder = $(event.currentTarget).detach();
+                
+                opp.append(yourEnemyHolder);
+                if ($(event.currentTarget).children("img").attr("id")==="krs-one") {
+                    defender = krsOne;
+                } else if ($(event.currentTarget).children("img").attr("id")==="ll-cool-j") {
+                    defender = llCoolJ;
+                } else if ($(event.currentTarget).children("img").attr("id")==="kool-moe-dee") {
+                    defender = koolMoeDee;
+                } else if ($(event.currentTarget).children("img").attr("id")==="ice-cube") {
+                    defender = iceCube;
+                }
+                phaseCounter++;
+                oppCounter++;
             }
-            phaseCounter++;
-            oppCounter++;
         } 
     });
 
@@ -324,11 +314,5 @@ $(document).ready(function() {
     //     iceCube.pic(characterSelect);
     //     runInstructions();
     // }
-
-
-
-
-
-
 
 });
